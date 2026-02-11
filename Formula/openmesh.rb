@@ -1,7 +1,7 @@
 class Openmesh < Formula
   desc "Half-edge polygon mesh data structure"
   homepage "https://www.graphics.rwth-aachen.de/software/openmesh/"
-  url "https://github.com/ayourk/hobbycad-vcpkg/releases/download/sources/libopenmesh_11.0.0.git~20260208.orig.tar.gz"
+  url "https://github.com/ayourk/hobbycad-vcpkg/releases/download/sources/libopenmesh_11.0.0.git.20260208.orig.tar.gz"
   version "11.0.0"
   sha256 "b6f0a3eb3078984ca651b6bf38a781a072049222f77bac1025101371fca18899"
   license "BSD-3-Clause"

@@ -1,7 +1,7 @@
 class Lib3mf < Formula
   desc "3D Manufacturing Format library"
   homepage "https://3mf.io/"
-  url "https://github.com/ayourk/hobbycad-vcpkg/releases/download/sources/lib3mf_2.4.1.git~20260208.orig.tar.gz"
+  url "https://github.com/ayourk/hobbycad-vcpkg/releases/download/sources/lib3mf_2.4.1.git.20260208.orig.tar.gz"
   version "2.4.1"
   sha256 "469f4b8780ee4c369b695210611d70fc70e8e4b22da6ea97265f69c9a50828b1"
   license "BSD-2-Clause"
@@ -12,7 +12,7 @@ class Lib3mf < Formula
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
            "-DLIB3MF_TESTS=OFF",
-           "-DUSE_INCLUDED_ZLIB=OFF"
+           "-DUSE_INCLUDED_ZLIB=ON"
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
