@@ -11,7 +11,7 @@ class LibzipAT173 < Formula
   homepage "https://libzip.org/"
   url "https://github.com/nih-at/libzip/releases/download/v1.7.3/libzip-1.7.3.tar.gz"
   version "1.7.3"
-  sha256 "0e2276c550c5a310d4ebf3a2c3dfc43fb3b4602a072ff625842ad4f3238cb9cc"
+  sha256 "REPLACE_WITH_SHA256"
   license "BSD-3-Clause"
 
   keg_only :versioned_formula

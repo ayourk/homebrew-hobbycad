@@ -11,7 +11,7 @@ class Libgit2AT172 < Formula
   homepage "https://libgit2.org/"
   url "https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.2.tar.gz"
   version "1.7.2"
-  sha256 "de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f"
+  sha256 "REPLACE_WITH_SHA256"
   license "GPL-2.0-only" => { with: "GCC-exception-3.1" }
 
   keg_only :versioned_formula
