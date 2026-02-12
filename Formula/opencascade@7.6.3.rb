@@ -11,7 +11,7 @@ class OpencascadeAT763 < Formula
   homepage "https://dev.opencascade.org/"
   url "https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_6_3.tar.gz"
   version "7.6.3"
-  sha256 "REPLACE_WITH_SHA256"
+  sha256 "3f95808e2c5060c5b5001770b5e42c7d9a849b23d925272bc70a5a2377413aa9"
   license "LGPL-2.1-only"
 
   keg_only :versioned_formula
