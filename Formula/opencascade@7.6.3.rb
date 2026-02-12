@@ -20,6 +20,13 @@ class OpencascadeAT763 < Formula
   depends_on "freetype"
 
   def install
+    # Fix: FreeType 2.13+ changed FT_Outline.tags from char* to
+    # unsigned char*, breaking the const char* assignment in OCCT.
+    # Upstream fix: commit 7236e83dcc1e.
+    inreplace "src/StdPrs/StdPrs_BRepFont.cxx",
+              /const char\*\s+aTags\s*=\s*&anOutline->tags\[aStartIndex\];/,
+              "const auto* aTags = &anOutline->tags[aStartIndex];"
+
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
            "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
