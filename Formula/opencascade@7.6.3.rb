@@ -11,17 +11,13 @@ class OpencascadeAT763 < Formula
   homepage "https://dev.opencascade.org/"
   url "https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_6_3.tar.gz"
   version "7.6.3"
-  sha256 "3f95808e2c5060c5b5001770b5e42c7d9a849b23d925272bc70a5a2377413aa9"
+  sha256 "REPLACE_WITH_SHA256"
   license "LGPL-2.1-only"
 
   keg_only :versioned_formula
 
   depends_on "cmake" => :build
   depends_on "freetype"
-
-  on_macos do
-    depends_on "tbb"
-  end
 
   def install
     system "cmake", "-S", ".", "-B", "build",
@@ -30,7 +26,7 @@ class OpencascadeAT763 < Formula
            "-DBUILD_LIBRARY_TYPE=Shared",
            "-DBUILD_MODULE_Draw=OFF",
            "-DUSE_FREETYPE=ON",
-           "-DUSE_TBB=#{OS.mac? ? "ON" : "OFF"}",
+           "-DUSE_TBB=OFF",
            "-DUSE_FREEIMAGE=OFF",
            "-DUSE_RAPIDJSON=OFF",
            "-DUSE_VTK=OFF",
