@@ -1,10 +1,17 @@
-# Pinned to match Ubuntu 24.04 LTS (see docs/dev_environment_setup.txt §6.4)
+# =====================================================================
+#  HobbyCAD-homebrew — Formula/opencascade@7.6.3.rb — OCCT 7.6.3 (pinned)
+# =====================================================================
+#
+#  Pinned to match Ubuntu 24.04 LTS.
+#  See docs/dev_environment_setup.txt §6.4.
+#
+# =====================================================================
 class OpencascadeAT763 < Formula
   desc "3D modeling and numerical simulation software for CAD/CAM/CAE"
   homepage "https://dev.opencascade.org/"
   url "https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_6_3.tar.gz"
   version "7.6.3"
-  sha256 "3f95808e2c5060c5b5001770b5e42c7d9a849b23d925272bc70a5a2377413aa9"
+  sha256 "REPLACE_WITH_SHA256"
   license "LGPL-2.1-only"
 
   keg_only :versioned_formula
@@ -19,6 +26,7 @@ class OpencascadeAT763 < Formula
   def install
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
+           "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
            "-DBUILD_LIBRARY_TYPE=Shared",
            "-DBUILD_MODULE_Draw=OFF",
            "-DUSE_FREETYPE=ON",

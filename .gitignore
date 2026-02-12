@@ -1,1 +1,7 @@
-populate-sha256.sh
+# =====================================================================
+#  HobbyCAD-homebrew — .gitignore — Version control exclusions
+# =====================================================================
+
+# Homebrew build artifacts
+*.bottle.*
+*.cellar
