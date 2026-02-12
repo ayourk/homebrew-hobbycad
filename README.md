@@ -1,5 +1,7 @@
 # homebrew-hobbycad
 
+<!-- HobbyCAD-homebrew — README.md -->
+
 Homebrew tap for [HobbyCAD](https://github.com/ayourk/hobbycad) dependencies
 not available in Homebrew core.
 

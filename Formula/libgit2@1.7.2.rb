@@ -1,10 +1,17 @@
-# Pinned to match Ubuntu 24.04 LTS (see docs/dev_environment_setup.txt §6.4)
+# =====================================================================
+#  HobbyCAD-homebrew — Formula/libgit2@1.7.2.rb — libgit2 1.7.2 (pinned)
+# =====================================================================
+#
+#  Pinned to match Ubuntu 24.04 LTS.
+#  See docs/dev_environment_setup.txt §6.4.
+#
+# =====================================================================
 class Libgit2AT172 < Formula
   desc "C library for Git core methods"
   homepage "https://libgit2.org/"
   url "https://github.com/libgit2/libgit2/archive/refs/tags/v1.7.2.tar.gz"
   version "1.7.2"
-  sha256 "de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f"
+  sha256 "REPLACE_WITH_SHA256"
   license "GPL-2.0-only" => { with: "GCC-exception-3.1" }
 
   keg_only :versioned_formula
@@ -18,6 +25,7 @@ class Libgit2AT172 < Formula
   def install
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
+           "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
            "-DBUILD_TESTS=OFF",
            "-DBUILD_CLI=OFF",
            "-DUSE_SSH=ON"
