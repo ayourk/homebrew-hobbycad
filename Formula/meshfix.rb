@@ -9,13 +9,22 @@ class Meshfix < Formula
   depends_on "cmake" => :build
 
   # Cross-platform patch: separates library from CLI, adds CMake
-  # package config, fixes cstdint include guard.
+  # package config.  The coordinates.h hunk is applied separately via
+  # inreplace below because the upstream tarball uses CRLF line endings
+  # in that file, which prevents the unified diff from matching.
   patch do
-    url "https://raw.githubusercontent.com/ayourk/hobbycad-vcpkg/main/ports/meshfix/build-shared-library-cross-platform.patch"
-    sha256 "5982fcdb11251b0bec2b66ecbfbf37aa8593823906daa97b030afa02e6da2c4d"
+    url "https://raw.githubusercontent.com/ayourk/hobbycad-vcpkg/main/ports/meshfix/build-shared-library-homebrew.patch"
+    sha256 "12145ca0d15b39e242c93fdce7555b0ab162073254a363a1e16e21454b93e2a6"
   end
 
   def install
+    # Remove Apple-specific guard around cstdint include — the header is
+    # available on all modern toolchains.  Applied via inreplace rather
+    # than the patch above because coordinates.h has mixed CRLF/LF line
+    # endings that cause the unified diff hunk to fail.
+    inreplace "include/Kernel/coordinates.h",
+              "#ifndef __APPLE__\r\n#include <cstdint>\r\n#endif",
+              "#include <cstdint>"
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
            "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
