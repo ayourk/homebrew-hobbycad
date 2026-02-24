@@ -11,6 +11,7 @@ class Openmesh < Formula
   def install
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
+           "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
            "-DBUILD_APPS=OFF",
            "-DOPENMESH_BUILD_SHARED=ON",
            "-DOPENMESH_DOCS=OFF",
