@@ -11,6 +11,7 @@ class Lib3mf < Formula
   def install
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
+           "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
            "-DLIB3MF_TESTS=OFF",
            "-DUSE_INCLUDED_ZLIB=ON"
     system "cmake", "--build", "build"

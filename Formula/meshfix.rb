@@ -18,6 +18,7 @@ class Meshfix < Formula
   def install
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
+           "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
            "-DMESHFIX_BUILD_SHARED=ON",
            "-DMESHFIX_BUILD_CLI=OFF"
     system "cmake", "--build", "build"
