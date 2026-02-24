@@ -39,6 +39,7 @@ class Libslvs < Formula
 
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
+           "-DCMAKE_CXX_STANDARD=14",
            "-DBUILD_LIB=ON",
            "-DENABLE_GUI=OFF",
            "-DENABLE_CLI=OFF",
