@@ -37,9 +37,12 @@ class Libslvs < Formula
     (eigen_dir/"Eigen").make_symlink Formula["eigen"].opt_prefix/"include/eigen3/Eigen"
     (eigen_dir/"unsupported").make_symlink Formula["eigen"].opt_prefix/"include/eigen3/unsupported"
 
+    # Override solvespace's set(CMAKE_CXX_STANDARD 11) — the -D flag cannot
+    # override a normal variable, so we must patch the source directly
+    inreplace "CMakeLists.txt", "set(CMAKE_CXX_STANDARD 11)", "set(CMAKE_CXX_STANDARD 14)"
+
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
-           "-DCMAKE_CXX_STANDARD=14",
            "-DBUILD_LIB=ON",
            "-DENABLE_GUI=OFF",
            "-DENABLE_CLI=OFF",
