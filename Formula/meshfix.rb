@@ -13,7 +13,7 @@ class Meshfix < Formula
   # inreplace below because the upstream tarball uses CRLF line endings
   # in that file, which prevents the unified diff from matching.
   patch do
-    url "https://raw.githubusercontent.com/ayourk/hobbycad-vcpkg/main/ports/meshfix/build-shared-library-homebrew.patch"
+    url "https://raw.githubusercontent.com/ayourk/hobbycad-vcpkg/26b3d5a082469fe0f9d9e064d98745eacc6653e2/ports/meshfix/build-shared-library-homebrew.patch"
     sha256 "12145ca0d15b39e242c93fdce7555b0ab162073254a363a1e16e21454b93e2a6"
   end
 

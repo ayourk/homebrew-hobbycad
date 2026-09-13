@@ -17,21 +17,20 @@ brew tap ayourk/hobbycad
 
 | Formula | Version | Description | License |
 |---------|---------|-------------|---------|
-| libslvs | 3.2 | SolveSpace constraint solver library | GPL 3.0 |
+| libslvs | 3.2p1 | SolveSpace constraint solver library, HobbyCAD series (snapshot 2026-09-08) | GPL 3.0 |
 | openmesh | 11.0.0 | Half-edge polygon mesh data structure | BSD 3-Clause |
 | lib3mf | 2.4.1 | 3D Manufacturing Format I/O | BSD 2-Clause |
 | meshfix | 2.1 | Automatic mesh repair | GPL 3.0+ |
 
-### Version-Pinned Libraries (matching Ubuntu 24.04 LTS)
+### Version-Pinned Libraries (matching the HobbyCAD PPA)
 
-These formulas pin specific upstream versions to match the Ubuntu 24.04
-packages used as HobbyCAD's reference platform (see
-`docs/dev_environment_setup.txt` §6.4). They are **keg-only** and do not
+These formulas pin specific upstream versions to match the packages the
+HobbyCAD PPA ships. They are **keg-only** and do not
 conflict with the corresponding Homebrew core formulas.
 
-| Formula | Pinned Version | Ubuntu 24.04 Version | License |
+| Formula | Pinned Version | PPA Version | License |
 |---------|---------------|---------------------|---------|
-| opencascade@7.6.3 | 7.6.3 | 7.6.3+dfsg1 | LGPL 2.1 |
+| opencascade@8.0.1 | 8.0.1p1 (current) | 8.0.1+p1-1~ppa1 | LGPL 2.1 |
 | libzip@1.7.3 | 1.7.3 | 1.7.3 | BSD 3-Clause |
 | libgit2@1.7.2 | 1.7.2 | 1.7.2 | GPL 2.0 w/ exception |
 
@@ -48,12 +47,13 @@ conflict with the corresponding Homebrew core formulas.
 brew tap ayourk/hobbycad
 
 # Phase 0 — pinned to Ubuntu 24.04 versions (keg-only)
-brew install ayourk/hobbycad/opencascade@7.6.3
+brew install ayourk/hobbycad/opencascade@8.0.1
 brew install ayourk/hobbycad/libzip@1.7.3
 brew install ayourk/hobbycad/libgit2@1.7.2
 
 # Phase 0 — from Homebrew core (not pinned)
-brew install cmake ninja qt@6 pybind11 libpng jpeg-turbo
+brew install cmake ninja nlohmann-json pybind11 libpng jpeg-turbo
+# qt@6 only without a prebuilt Qt 6.4.2 (see the note above)
 
 # Phase 1+ — custom libraries from this tap
 brew install ayourk/hobbycad/libslvs
@@ -69,25 +69,28 @@ to find them. Pass `CMAKE_PREFIX_PATH` with all three prefixes:
 
 ```bash
 cmake -S . -B build -G Ninja \
-  -DCMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@7.6.3);$(brew --prefix ayourk/hobbycad/libzip@1.7.3);$(brew --prefix ayourk/hobbycad/libgit2@1.7.2);$(brew --prefix qt@6)"
+  -DCMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@8.0.1);$(brew --prefix ayourk/hobbycad/libzip@1.7.3);$(brew --prefix ayourk/hobbycad/libgit2@1.7.2);$(brew --prefix qt@6)"
 ```
 
 Or export the variable in your shell profile:
 
 ```bash
-export CMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@7.6.3):$(brew --prefix ayourk/hobbycad/libzip@1.7.3):$(brew --prefix ayourk/hobbycad/libgit2@1.7.2):$(brew --prefix qt@6)"
+export CMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@8.0.1):$(brew --prefix ayourk/hobbycad/libzip@1.7.3):$(brew --prefix ayourk/hobbycad/libgit2@1.7.2):$(brew --prefix qt@6)"
 ```
 
 ## Source Archives
 
 All custom-library formulas download source tarballs from the
 [hobbycad-vcpkg](https://github.com/ayourk/hobbycad-vcpkg) release
-assets. These are git snapshots taken on 2026-02-08 from the upstream
-repositories — the same tarballs used for the Launchpad PPA and vcpkg
-registry builds.
+assets, the same orig tarballs the Launchpad PPA and the vcpkg registry
+build from. libslvs and opencascade@8.0.1 carry the HobbyCAD patch
+series inside the tarball (the `+pN` in the file name), so the formulas
+apply no patches of their own; the other custom libraries are git
+snapshots taken on 2026-02-08 from the upstream repositories.
 
-The pinned formulas download directly from the upstream project's
-GitHub releases.
+GitHub stores a release asset name with `~` replaced by `.`, so the
+URLs spell the snapshot as `3.2.git.20260908` even though the PPA
+version is `3.2.git~20260908`.
 
 ## Setup Notes
 
