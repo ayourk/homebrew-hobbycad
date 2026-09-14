@@ -19,7 +19,7 @@ brew tap ayourk/hobbycad
 |---------|---------|-------------|---------|
 | libslvs | 3.2p1 | SolveSpace constraint solver library, HobbyCAD series (snapshot 2026-09-08) | GPL 3.0 |
 | openmesh | 11.0.0 | Half-edge polygon mesh data structure | BSD 3-Clause |
-| lib3mf | 2.4.1 | 3D Manufacturing Format I/O | BSD 2-Clause |
+| lib3mf | 2.5.0p1 | 3D Manufacturing Format I/O, HobbyCAD build-system series | BSD 2-Clause |
 | meshfix | 2.1 | Automatic mesh repair | GPL 3.0+ |
 
 ### Version-Pinned Libraries (matching the HobbyCAD PPA)
