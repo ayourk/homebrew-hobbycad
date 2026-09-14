@@ -12,6 +12,10 @@ class Openmesh < Formula
     system "cmake", "-S", ".", "-B", "build",
            *std_cmake_args,
            "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
+           # OpenMesh leaves its own C++11 setting commented out, so the
+           # compiler default decides, and Apple clang still defaults to
+           # C++98: the headers use auto return types and fail to compile.
+           "-DCMAKE_CXX_STANDARD=17",
            "-DBUILD_APPS=OFF",
            "-DOPENMESH_BUILD_SHARED=ON",
            "-DOPENMESH_DOCS=OFF",
