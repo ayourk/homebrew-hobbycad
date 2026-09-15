@@ -17,7 +17,7 @@ brew tap ayourk/hobbycad
 
 | Formula | Version | Description | License |
 |---------|---------|-------------|---------|
-| libslvs | 3.2p1 | SolveSpace constraint solver library, HobbyCAD series (snapshot 2026-09-08) | GPL 3.0 |
+| libslvs | 3.2p1 | SolveSpace constraint solver library, HobbyCAD series (snapshot 2026-09-14) | GPL 3.0 |
 | openmesh | 11.0.0 | Half-edge polygon mesh data structure | BSD 3-Clause |
 | lib3mf | 2.5.0p1 | 3D Manufacturing Format I/O, HobbyCAD build-system series | BSD 2-Clause |
 | meshfix | 2.1 | Automatic mesh repair | GPL 3.0+ |
@@ -32,7 +32,7 @@ conflict with the corresponding Homebrew core formulas.
 |---------|---------------|---------------------|---------|
 | opencascade@8.0.1 | 8.0.1p1 (current) | 8.0.1+p1-1~ppa1 | LGPL 2.1 |
 | libzip@1.7.3 | 1.7.3 | 1.7.3 | BSD 3-Clause |
-| libgit2@1.7.2 | 1.7.2 | 1.7.2 | GPL 2.0 w/ exception |
+| libgit2@1.9.2 | 1.9.2 | 1.9.2+ds-6~ppa1 | GPL 2.0 w/ exception |
 
 > **Note:** Qt 6.4.2 is not pinned via Homebrew because building Qt from
 > source takes 2+ hours. Install Qt 6.4.2 via the
@@ -49,7 +49,7 @@ brew tap ayourk/hobbycad
 # Phase 0 — pinned to Ubuntu 24.04 versions (keg-only)
 brew install ayourk/hobbycad/opencascade@8.0.1
 brew install ayourk/hobbycad/libzip@1.7.3
-brew install ayourk/hobbycad/libgit2@1.7.2
+brew install ayourk/hobbycad/libgit2@1.9.2
 
 # Phase 0 — from Homebrew core (not pinned)
 brew install cmake ninja nlohmann-json pybind11 libpng jpeg-turbo
@@ -69,13 +69,13 @@ to find them. Pass `CMAKE_PREFIX_PATH` with all three prefixes:
 
 ```bash
 cmake -S . -B build -G Ninja \
-  -DCMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@8.0.1);$(brew --prefix ayourk/hobbycad/libzip@1.7.3);$(brew --prefix ayourk/hobbycad/libgit2@1.7.2);$(brew --prefix qt@6)"
+  -DCMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@8.0.1);$(brew --prefix ayourk/hobbycad/libzip@1.7.3);$(brew --prefix ayourk/hobbycad/libgit2@1.9.2);$(brew --prefix qt@6)"
 ```
 
 Or export the variable in your shell profile:
 
 ```bash
-export CMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@8.0.1):$(brew --prefix ayourk/hobbycad/libzip@1.7.3):$(brew --prefix ayourk/hobbycad/libgit2@1.7.2):$(brew --prefix qt@6)"
+export CMAKE_PREFIX_PATH="$(brew --prefix ayourk/hobbycad/opencascade@8.0.1):$(brew --prefix ayourk/hobbycad/libzip@1.7.3):$(brew --prefix ayourk/hobbycad/libgit2@1.9.2):$(brew --prefix qt@6)"
 ```
 
 ## Source Archives
@@ -89,8 +89,8 @@ apply no patches of their own; the other custom libraries are git
 snapshots taken on 2026-02-08 from the upstream repositories.
 
 GitHub stores a release asset name with `~` replaced by `.`, so the
-URLs spell the snapshot as `3.2.git.20260908` even though the PPA
-version is `3.2.git~20260908`.
+URLs spell the snapshot as `3.2.git.20260914` even though the PPA
+version is `3.2.git~20260914`.
 
 ## Setup Notes
 

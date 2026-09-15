@@ -3,16 +3,20 @@ class Libslvs < Formula
   homepage "https://github.com/solvespace/solvespace"
   # NOTE: the dots. GitHub release assets normalize "~" to "." in the stored
   # filename, so a URL written with a tilde 404s however correct the upload.
-  url "https://github.com/ayourk/hobbycad-vcpkg/releases/download/sources/libslvs_3.2.git.20260908+p1.orig.tar.gz"
-  # 3.2p1 = upstream 3.2 (master snapshot 2026-09-08) + HobbyCAD patch
-  # series, level 1 against that snapshot.  The level counts releases
-  # against ONE snapshot and restarts at a new one, so the snapshot and
-  # the level together identify the contents.  This one carries the
-  # nineteen-patch solver series (free parameter reporting, the #1769
-  # rank fix, drag weights, curvature, rational cubics, tangent-angle and
-  # curvature dimensions, operand validation, arc midpoint).  It is the
-  # same tarball the Launchpad PPA builds libslvs 3.2.git~20260908+p1-1
-  # from.
+  url "https://github.com/ayourk/hobbycad-vcpkg/releases/download/sources/libslvs_3.2.git.20260914+p1.orig.tar.gz"
+  # 3.2p1 = upstream 3.2 (master 952c11c0, series cut 2026-09-14) + HobbyCAD
+  # patch series, level 1 against that snapshot.  The level counts releases
+  # against ONE snapshot and restarts at a new one, so the snapshot and the
+  # level together identify the contents.  This one carries the
+  # twenty-seven-patch series: the nineteen of the 20260908 cut (free
+  # parameter reporting, the #1769 rank fix, drag weights, curvature,
+  # rational cubics, tangent-angle and curvature dimensions, operand
+  # validation, arc midpoint) plus trust-region Newton steps, inequality
+  # and circle-line tangent constraints, the live-source transform points,
+  # and the point-on-line initialization fix (SolveSpace #1775).  It is the
+  # same tarball the Launchpad PPA builds libslvs 3.2.git~20260914+p1-1
+  # from.  The version string is unchanged from the 20260908 cut, so the
+  # revision below makes existing installs upgrade.
   #
   # The series is DELIVERED INSIDE THE TARBALL, so this formula applies no
   # patches at all. It used to fetch five patch files from a moving branch
@@ -24,8 +28,9 @@ class Libslvs < Formula
   # HobbyCAD-libs/solvespace/patch-series/, and make-orig.sh regenerates this
   # tarball from it reproducibly.
   version "3.2p1"
-  sha256 "43276cfda2417e0fc0325c430a4a263325f46d7a2dd2794a881f8cf87bf937f8"
+  sha256 "c6ccc639b43113733b39d7adaa0d0b05061194fcb0abc22abf758b08a6f42a98"
   license "GPL-3.0-only"
+  revision 1
 
   depends_on "cmake" => :build
   depends_on "eigen"
